@@ -8,11 +8,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>برنامج المحاسب الشخصي</h1>
+    </header>
     <div class="input-page">
         <h2>إدخال بيانات المحاسبة</h2>
         <div class="input-box">
-            <textarea placeholder="نص الإيصال من البنك"></textarea>
-            <button class="primary-btn">تحليل الإيصال</button>
+            <textarea id="receipt" placeholder="أدخل نص الإيصال هنا"></textarea>
+            <button class="primary-btn" onclick="analyzeReceipt()">تحليل الإيصال</button>
         </div>
         <div class="data-table">
             <table>
@@ -25,7 +28,7 @@
                         <th>المبلغ (ريال سعودي)</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="data-rows">
                     <tr>
                         <td>---</td>
                         <td>---</td>
@@ -35,8 +38,8 @@
                     </tr>
                 </tbody>
             </table>
-            <button class="primary-btn">إدخال البيانات</button>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
