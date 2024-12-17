@@ -4,40 +4,38 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-align: center;
 }
 
 body {
     background: linear-gradient(to bottom right, #2D8B2D, #57A84C);
     color: #ffffff;
+    text-align: center;
 }
 
-h1, h2 {
-    font-weight: bold;
-    margin: 20px 0;
-    color: #FFC107; /* أصفر */
-}
-
-/* تصميم صندوق تسجيل الدخول */
+/* الصفحة الرئيسية (تسجيل الدخول) */
 .login-container {
     margin: 50px auto;
     width: 350px;
 }
 
+h1, h2 {
+    margin-bottom: 20px;
+    color: #FFC107;
+}
+
 .login-box {
-    background-color: #0F285A; /* أزرق داكن */
+    background-color: #0F285A;
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 label {
     display: block;
-    color: white;
-    margin: 10px 0 5px;
+    margin: 10px 0;
+    color: #ffffff;
 }
 
-input {
+input, textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -45,43 +43,42 @@ input {
     border-radius: 5px;
 }
 
-.primary-btn, .secondary-btn {
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-}
-
 .primary-btn {
-    background-color: #FFC107; /* أصفر */
+    background-color: #FFC107;
     color: #0F285A;
-}
-
-.secondary-btn {
-    background-color: #ffffff;
-    color: #0F285A;
-}
-
-/* تصميم صفحة إدخال البيانات */
-.input-page {
-    padding: 20px;
-}
-
-.input-box textarea {
-    width: 80%;
-    height: 100px;
-    border-radius: 10px;
     border: none;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
+.primary-btn:hover {
+    background-color: #E0A800;
+}
+
+header {
+    margin: 20px 0;
+    color: #ffffff;
+}
+
+/* الجدول */
 table {
     margin: 20px auto;
+    width: 90%;
     border-collapse: collapse;
-    width: 80%;
     background-color: #ffffff;
     color: #333;
-    border-radius: 
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #0F285A;
+    color: #ffffff;
+}
