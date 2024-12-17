@@ -1,0 +1,70 @@
+/* إعداد الخطوط والألوان */
+* {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body {
+    background: linear-gradient(to bottom right, #2D8B2D, #57A84C);
+    color: #ffffff;
+}
+
+.login-container {
+    margin: 50px auto;
+    width: 350px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #FFC107; /* أصفر */
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #FFC107;
+}
+
+.login-box {
+    background-color: #0F285A; /* أزرق داكن */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    color: white;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background-color: #FFC107; /* أصفر */
+    color: #0F285A;
+}
+
+.secondary-btn {
+    background-color: #ffffff;
+    color: #0F285A;
+}
