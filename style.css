@@ -12,21 +12,16 @@ body {
     color: #ffffff;
 }
 
-.login-container {
-    margin: 50px auto;
-    width: 350px;
-}
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+h1, h2 {
+    font-weight: bold;
+    margin: 20px 0;
     color: #FFC107; /* أصفر */
 }
 
-h2 {
-    font-size: 48px;
-    font-weight: bold;
-    color: #FFC107;
+/* تصميم صندوق تسجيل الدخول */
+.login-container {
+    margin: 50px auto;
+    width: 350px;
 }
 
 .login-box {
@@ -68,3 +63,25 @@ input {
     background-color: #ffffff;
     color: #0F285A;
 }
+
+/* تصميم صفحة إدخال البيانات */
+.input-page {
+    padding: 20px;
+}
+
+.input-box textarea {
+    width: 80%;
+    height: 100px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+    background-color: #ffffff;
+    color: #333;
+    border-radius: 
