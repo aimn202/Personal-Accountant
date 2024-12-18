@@ -42,7 +42,7 @@ nav ul li:hover {
     color: #FFC107;
 }
 
-/* الحاويات الرئيسية */
+/* الصفحة الرئيسية */
 main {
     margin-top: 70px;
     display: flex;
@@ -53,6 +53,7 @@ main {
     align-items: flex-start;
 }
 
+/* الأقسام */
 .section {
     background: white;
     border-radius: 8px;
@@ -61,11 +62,12 @@ main {
     width: 100%;
 }
 
-/* الأقسام */
+/* مربع الإدخال */
 .input-box {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 15px;
 }
 
 .input-box textarea {
@@ -76,19 +78,29 @@ main {
     resize: none;
 }
 
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* الأزرار */
+button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
 .primary-btn {
     background-color: #635BFF;
     color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 10px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.primary-btn:hover {
-    background-color: #4E47CC;
 }
 
 .export-btn {
@@ -96,20 +108,26 @@ main {
     color: #0F285A;
 }
 
-.export-btn:hover {
-    background-color: #e6b700;
+.delete-btn {
+    background-color: #F44336;
+    color: white;
+    font-size: 12px;
+}
+
+.delete-btn:hover {
+    background-color: #D32F2F;
 }
 
 /* الجداول */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 th, td {
     text-align: center;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ddd;
 }
 
@@ -126,15 +144,21 @@ tr:hover {
     background-color: #eef3f7;
 }
 
+/* تنسيق المجموع */
 #totals {
-    margin-top: 15px;
+    margin-top: 20px;
+    text-align: center;
     font-size: 16px;
     font-weight: bold;
     color: #0F285A;
 }
 
-/* رسائل التنبيه */
-.error-message {
-    color: red;
-    font-size: 14px;
+/* الملف الشخصي */
+.profile-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    text-align: center;
 }
