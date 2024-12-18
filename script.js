@@ -1,9 +1,9 @@
+// قائمة المستخدمين وكلمات المرور
 const users = [
     { username: "admin", password: "1234" },
-    { username: "user", password: "5678" }
+    { username: "user", password: "5678" },
+    { username: "newuser", password: "mypassword" } // مستخدم جديد
 ];
-
-const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
 // تسجيل الدخول
 function login() {
@@ -13,8 +13,8 @@ function login() {
     const user = users.find(u => u.username === username && u.password === password);
 
     if (user) {
-        localStorage.setItem("loggedInUser", username);
-        window.location.href = "home.html";
+        localStorage.setItem("loggedInUser", username); // تخزين المستخدم في LocalStorage
+        window.location.href = "home.html"; // إعادة التوجيه للصفحة الرئيسية
     } else {
         document.getElementById("error-message").innerText = "اسم المستخدم أو كلمة المرور غير صحيحة!";
     }
@@ -24,17 +24,19 @@ function login() {
 function checkLogin() {
     const loggedInUser = localStorage.getItem("loggedInUser");
     if (!loggedInUser) {
-        window.location.href = "login.html";
+        window.location.href = "login.html"; // إعادة التوجيه إلى صفحة تسجيل الدخول
     }
 }
 
 // تسجيل الخروج
 function logout() {
-    localStorage.removeItem("loggedInUser");
-    window.location.href = "login.html";
+    localStorage.removeItem("loggedInUser"); // حذف بيانات المستخدم
+    window.location.href = "login.html"; // إعادة التوجيه إلى صفحة تسجيل الدخول
 }
 
 // تحليل الإيصال
+const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+
 function analyzeReceipt() {
     const receiptText = document.getElementById('receipt').value;
 
