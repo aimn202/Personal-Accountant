@@ -6,20 +6,18 @@
     <title>برنامج المحاسب الشخصي</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="checkLogin()">
     <header>
         <h1>برنامج المحاسب الشخصي</h1>
-        <h2>إدخال بيانات المحاسبة</h2>
+        <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
     </header>
 
-    <!-- إدخال بيانات -->
     <div class="input-box">
         <textarea id="receipt" placeholder="أدخل نص الإيصال هنا"></textarea>
         <button class="primary-btn" onclick="analyzeReceipt()">تحليل الإيصال</button>
         <button class="export-btn" onclick="exportToExcel()">تصدير البيانات</button>
     </div>
 
-    <!-- الجدول -->
     <div class="data-table">
         <table>
             <thead>
@@ -34,10 +32,11 @@
             </thead>
             <tbody id="data-rows"></tbody>
         </table>
-        <div id="totals">
-            <p>مجموع الدخل الشهري: <span id="income-total">0</span> ريال</p>
-            <p>مجموع المصروفات الشهرية: <span id="expense-total">0</span> ريال</p>
-        </div>
+    </div>
+
+    <div id="totals">
+        <p>مجموع الدخل الشهري: <span id="income-total">0</span> ريال</p>
+        <p>مجموع المصروفات الشهرية: <span id="expense-total">0</span> ريال</p>
     </div>
 
     <script src="script.js"></script>
