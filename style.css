@@ -1,49 +1,75 @@
+/* تنسيق عام */
 body {
     font-family: 'IBM Plex Sans Arabic', sans-serif;
-    background-color: #2D8B2D;
-    color: #fff;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    text-align: center;
+}
+
+header {
+    background-color: #0F285A;
+    color: #FFC107;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2 {
+    margin: 0;
+    font-weight: bold;
+}
+
+/* مربع النص لإدخال الإيصال */
+.input-box {
+    margin: 20px auto;
     text-align: center;
 }
 
 .input-box textarea {
     width: 80%;
     height: 120px;
+    margin-bottom: 10px;
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 16px;
     resize: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background-color: #fff;
-    color: #000;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #0F285A;
-    color: #fff;
-}
-
-.primary-btn {
-    background-color: #FFC107;
-    color: #0F285A;
+.primary-btn, .export-btn, .delete-btn {
+    margin: 5px;
     padding: 10px 20px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
-    margin-top: 10px;
     cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease;
 }
 
-.totals-section {
-    margin-top: 20px;
-    font-size: 18px;
+/* الأزرار */
+.primary-btn {
+    background-color: #4CAF50; /* أخضر */
 }
+
+.primary-btn:hover {
+    background-color: #45A049;
+}
+
+.export-btn {
+    background-color: #2196F3; /* أزرق */
+}
+
+.export-btn:hover {
+    background-color: #1976D2;
+}
+
+.delete-btn {
+    background-color: #F44336; /* أحمر */
+}
+
+.delete-btn:hover {
+    background-color: #D32F2F;
