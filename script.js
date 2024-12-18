@@ -7,8 +7,8 @@ const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
 // تسجيل الدخول
 function login() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
     const user = users.find(u => u.username === username && u.password === password);
 
@@ -22,8 +22,8 @@ function login() {
 
 // التحقق من تسجيل الدخول
 function checkLogin() {
-    const user = localStorage.getItem("loggedInUser");
-    if (!user) {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (!loggedInUser) {
         window.location.href = "login.html";
     }
 }
