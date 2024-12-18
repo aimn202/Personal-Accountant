@@ -18,38 +18,41 @@
         </ul>
     </nav>
 
-    <section id="transactions" class="section">
-        <div class="input-box">
-            <textarea id="receipt" placeholder="أدخل نص الإيصال هنا"></textarea>
-            <button class="primary-btn" onclick="analyzeReceipt()">تحليل الإيصال</button>
-            <button class="export-btn" onclick="exportToExcel()">تصدير البيانات</button>
-        </div>
-        <div class="data-table">
+    <main>
+        <!-- القسم الرئيسي -->
+        <section id="transactions" class="section">
+            <div class="input-box">
+                <textarea id="receipt" placeholder="أدخل نص الإيصال هنا"></textarea>
+                <button class="primary-btn" onclick="analyzeReceipt()">تحليل الإيصال</button>
+                <button class="primary-btn export-btn" onclick="exportToExcel()">تصدير البيانات</button>
+            </div>
             <table>
                 <thead>
                     <tr>
                         <th>التاريخ</th>
                         <th>الفئة</th>
                         <th>الوصف</th>
-                        <th>ملاحظات</th>
+                        <th>الملاحظات</th>
                         <th>المبلغ</th>
-                        <th>إجراءات</th>
+                        <th>الإجراءات</th>
                     </tr>
                 </thead>
                 <tbody id="data-rows"></tbody>
             </table>
-        </div>
-        <div id="totals">
-            <p>مجموع الدخل الشهري: <span id="income-total">0</span> ريال</p>
-            <p>مجموع المصروفات الشهرية: <span id="expense-total">0</span> ريال</p>
-        </div>
-    </section>
+            <div id="totals">
+                مجموع الدخل الشهري: <span id="income-total">0</span> ريال |
+                مجموع المصروفات الشهرية: <span id="expense-total">0</span> ريال
+            </div>
+        </section>
 
-    <section id="profile" class="section hidden">
-        <h2>الملف الشخصي</h2>
-        <p>اسم المستخدم: <span id="username-display"></span></p>
-    </section>
+        <!-- القسم الجانبي -->
+        <section id="profile" class="section">
+            <h2>الموازنة للملف الشخصي</h2>
+            <p>إجمالي الدخل الحالي: <span id="budget-income">0</span> ريال</p>
+            <p>اسم المستخدم: <span id="username-display"></span></p>
+        </section>
+    </main>
 
-    <section id="budget" class="section hidden">
-        <h2>الموازنة</h2>
-        <p>إجمالي الدخل الحالي: <span id="budget-income">0</span> ريال</p>
+    <script src="script.js"></script>
+</body>
+</html>
