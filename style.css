@@ -1,84 +1,49 @@
-/* إعداد الخطوط والألوان */
-* {
-    font-family: 'IBM Plex Sans Arabic', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    background: linear-gradient(to bottom right, #2D8B2D, #57A84C);
-    color: #ffffff;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    background-color: #2D8B2D;
+    color: #fff;
     text-align: center;
 }
 
-/* الصفحة الرئيسية (تسجيل الدخول) */
-.login-container {
-    margin: 50px auto;
-    width: 350px;
-}
-
-h1, h2 {
-    margin-bottom: 20px;
-    color: #FFC107;
-}
-
-.login-box {
-    background-color: #0F285A;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-label {
-    display: block;
-    margin: 10px 0;
-    color: #ffffff;
-}
-
-input, textarea {
-    width: 100%;
+.input-box textarea {
+    width: 80%;
+    height: 120px;
     padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: none;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    color: #000;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #0F285A;
+    color: #fff;
 }
 
 .primary-btn {
     background-color: #FFC107;
     color: #0F285A;
-    border: none;
     padding: 10px 20px;
-    cursor: pointer;
+    border: none;
     border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
-.primary-btn:hover {
-    background-color: #E0A800;
-}
-
-header {
-    margin: 20px 0;
-    color: #ffffff;
-}
-
-/* الجدول */
-table {
-    margin: 20px auto;
-    width: 90%;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    color: #333;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-th {
-    background-color: #0F285A;
-    color: #ffffff;
+.totals-section {
+    margin-top: 20px;
+    font-size: 18px;
 }
