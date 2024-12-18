@@ -7,37 +7,64 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="checkLogin()">
-    <header>
+    <!-- قائمة التنقل -->
+    <nav>
         <h1>برنامج المحاسب الشخصي</h1>
-        <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
-    </header>
+        <ul>
+            <li onclick="showSection('transactions')">الرئيسية</li>
+            <li onclick="showSection('profile')">الملف الشخصي</li>
+            <li onclick="showSection('budget')">الموازنة</li>
+            <li onclick="showSection('saving')">الادخار</li>
+            <li onclick="logout()">تسجيل الخروج</li>
+        </ul>
+    </nav>
 
-    <div class="input-box">
-        <textarea id="receipt" placeholder="أدخل نص الإيصال هنا"></textarea>
-        <button class="primary-btn" onclick="analyzeReceipt()">تحليل الإيصال</button>
-        <button class="export-btn" onclick="exportToExcel()">تصدير البيانات</button>
-    </div>
+    <!-- أقسام الصفحات -->
+    <section id="transactions" class="section">
+        <div class="input-box">
+            <textarea id="receipt" placeholder="أدخل نص الإيصال هنا"></textarea>
+            <button class="primary-btn" onclick="analyzeReceipt()">تحليل الإيصال</button>
+        </div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>التاريخ</th>
+                        <th>الفئة</th>
+                        <th>الوصف</th>
+                        <th>ملاحظات</th>
+                        <th>المبلغ</th>
+                        <th>إجراءات</th>
+                    </tr>
+                </thead>
+                <tbody id="data-rows"></tbody>
+            </table>
+        </div>
+        <div id="totals">
+            <p>مجموع الدخل الشهري: <span id="income-total">0</span> ريال</p>
+            <p>مجموع المصروفات الشهرية: <span id="expense-total">0</span> ريال</p>
+        </div>
+    </section>
 
-    <div class="data-table">
-        <table>
-            <thead>
-                <tr>
-                    <th>التاريخ</th>
-                    <th>الفئة</th>
-                    <th>الوصف</th>
-                    <th>ملاحظات</th>
-                    <th>المبلغ</th>
-                    <th>إجراءات</th>
-                </tr>
-            </thead>
-            <tbody id="data-rows"></tbody>
-        </table>
-    </div>
+    <section id="profile" class="section hidden">
+        <h2>الملف الشخصي</h2>
+        <p>اسم المستخدم: <span id="username-display"></span></p>
+        <p>تعديل البيانات الشخصية سيتم إضافته هنا لاحقًا...</p>
+    </section>
 
-    <div id="totals">
-        <p>مجموع الدخل الشهري: <span id="income-total">0</span> ريال</p>
-        <p>مجموع المصروفات الشهرية: <span id="expense-total">0</span> ريال</p>
-    </div>
+    <section id="budget" class="section hidden">
+        <h2>الموازنة</h2>
+        <p>إجمالي الدخل الحالي: <span id="budget-income">0</span> ريال</p>
+        <p>المصروفات: <span id="budget-expense">0</span> ريال</p>
+    </section>
+
+    <section id="saving" class="section hidden">
+        <h2>خطة الادخار (قاعدة 50-30-20)</h2>
+        <p>الدخل الكلي: <span id="saving-total-income">0</span> ريال</p>
+        <p>احتياجات (50%): <span id="needs">0</span> ريال</p>
+        <p>رغبات (30%): <span id="wants">0</span> ريال</p>
+        <p>ادخار (20%): <span id="savings">0</span> ريال</p>
+    </section>
 
     <script src="script.js"></script>
 </body>
