@@ -1,121 +1,86 @@
+/* تصميم عام */
 body {
     font-family: 'IBM Plex Sans Arabic', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f6f9fc;
     color: #33475b;
-    line-height: 1.6;
-}
-
-nav {
-    background-color: #0F285A;
-    color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 100vh;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    cursor: pointer;
-    font-size: 16px;
-    transition: color 0.3s;
-}
-
-nav ul li:hover {
-    color: #FFC107;
-}
-
-.section {
-    margin: 20px auto;
-    padding: 20px;
-    width: 90%;
-    max-width: 1200px;
-    background-color: white;
+/* تصميم الحاوية */
+.login-container {
+    background: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    padding: 30px;
+    text-align: center;
 }
 
-.hidden {
-    display: none;
+.login-container h1 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #0F285A;
 }
 
-.input-box textarea {
+.login-container p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* تصميم الحقول */
+.login-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-box label {
+    text-align: right;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.login-box input {
     width: 100%;
-    max-width: 600px;
-    height: 120px;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    resize: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
-button {
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 6px;
+.login-box input:focus {
+    outline: none;
+    border-color: #635BFF;
+    box-shadow: 0 0 5px rgba(99, 91, 255, 0.3);
+}
+
+/* تصميم الزر */
+.primary-btn {
+    background-color: #635BFF;
+    color: #fff;
     border: none;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
-button:hover {
+.primary-btn:hover {
+    background-color: #4E47CC;
     transform: scale(1.05);
 }
 
-.primary-btn {
-    background-color: #635BFF;
-    color: white;
-}
-
-.primary-btn:hover {
-    background-color: #4E47CC;
-}
-
-.logout-btn {
-    background-color: #F44336;
-    color: white;
-}
-
-.logout-btn:hover {
-    background-color: #D32F2F;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 16px;
-}
-
-th, td {
-    text-align: left;
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #f6f9fc;
-    color: #33475b;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #eef3f7;
+/* تصميم الرسائل */
+.error-message {
+    color: #F44336;
+    font-size: 14px;
+    margin-top: 10px;
 }
