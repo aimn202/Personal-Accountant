@@ -2,8 +2,9 @@
 body {
     font-family: 'IBM Plex Sans Arabic', sans-serif;
     margin: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    padding: 0;
+    background-color: #f6f9fc;
+    color: #33475b;
     line-height: 1.6;
 }
 
@@ -11,48 +12,51 @@ h1, h2, p {
     margin: 10px 0;
 }
 
-/* تنسيق قائمة التنقل */
+/* قائمة التنقل (Navbar) */
 nav {
     background-color: #0F285A;
-    color: #fff;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav h1 {
+    font-size: 20px;
+    font-weight: bold;
     margin: 0;
-    font-size: 24px;
 }
 
 nav ul {
     list-style: none;
+    display: flex;
+    gap: 15px;
     margin: 0;
     padding: 0;
-    display: flex;
-    gap: 20px;
 }
 
 nav ul li {
     cursor: pointer;
-    transition: color 0.3s;
+    transition: color 0.3s ease-in-out;
+    font-size: 16px;
 }
 
 nav ul li:hover {
     color: #FFC107;
 }
 
-/* الأقسام الرئيسية */
+/* الأقسام */
 .section {
-    display: block;
     margin: 20px auto;
     padding: 20px;
     width: 90%;
-    max-width: 1000px;
-    background: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    background-color: white;
     border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
 }
 
 .hidden {
@@ -61,48 +65,59 @@ nav ul li:hover {
 
 /* مربع إدخال النص */
 .input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 20px auto;
-    text-align: center;
 }
 
 .input-box textarea {
-    width: 90%;
-    height: 100px;
+    width: 100%;
+    max-width: 600px;
+    height: 120px;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 16px;
     margin-bottom: 10px;
     resize: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
+    padding: 12px 20px;
     font-size: 16px;
-    transition: background-color 0.3s;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
 }
 
 .primary-btn {
-    background-color: #4CAF50;
+    background-color: #635BFF;
+    color: white;
 }
 
 .primary-btn:hover {
-    background-color: #45A049;
+    background-color: #4E47CC;
 }
 
 .export-btn {
-    background-color: #007BFF;
+    background-color: #2196F3;
+    color: white;
 }
 
 .export-btn:hover {
-    background-color: #0056b3;
+    background-color: #1A73E8;
 }
 
 .logout-btn {
     background-color: #F44336;
+    color: white;
 }
 
 .logout-btn:hover {
@@ -111,8 +126,12 @@ button {
 
 .delete-btn {
     background-color: #F44336;
+    color: white;
     font-size: 14px;
-    padding: 5px 10px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
 
 .delete-btn:hover {
@@ -124,53 +143,54 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    font-size: 16px;
 }
 
 th, td {
-    border: 1px solid #ddd;
+    text-align: left;
     padding: 10px;
-    text-align: center;
+    border: 1px solid #ddd;
 }
 
 th {
-    background-color: #0F285A;
-    color: #fff;
+    background-color: #f6f9fc;
+    color: #33475b;
+    font-weight: bold;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f9f9f9;
 }
 
 tr:hover {
-    background-color: #f1f1f1;
+    background-color: #eef3f7;
 }
 
-/* تنسيق قسم الادخار */
-#saving p {
+/* بطاقات الموازنة والادخار */
+#saving p, #budget p {
     font-size: 18px;
     margin: 10px 0;
     color: #555;
 }
 
-#saving span {
+#saving span, #budget span {
     font-weight: bold;
-    color: #0F285A;
+    color: #635BFF;
     font-size: 20px;
 }
 
-/* الملف الشخصي */
+/* تنسيق قسم الملف الشخصي */
+#profile {
+    text-align: center;
+}
+
 #profile p {
     font-size: 18px;
     color: #444;
+    margin: 10px 0;
 }
 
-/* الموازنة */
-#budget p {
-    font-size: 18px;
-    color: #444;
-}
-
-/* الرسائل */
+/* تنسيق الرسائل */
 .error-message {
     color: red;
     font-size: 14px;
@@ -180,14 +200,8 @@ tr:hover {
 /* رأس الصفحة */
 header {
     background-color: #0F285A;
-    color: #FFC107;
+    color: white;
     padding: 15px;
     text-align: center;
-    margin-bottom: 20px;
     border-bottom: 4px solid #FFC107;
-}
-
-/* زر تنسيق بسيط */
-button:hover {
-    opacity: 0.9;
 }
