@@ -1,4 +1,4 @@
-/* تصميم عام */
+/* إعدادات عامة */
 body {
     font-family: 'IBM Plex Sans Arabic', sans-serif;
     margin: 0;
@@ -11,7 +11,7 @@ body {
     height: 100vh;
 }
 
-/* تصميم الحاوية */
+/* تصميم حاوية تسجيل الدخول */
 .login-container {
     background: #ffffff;
     border-radius: 10px;
@@ -32,7 +32,7 @@ body {
     color: #666;
 }
 
-/* تصميم الحقول */
+/* تنسيق مربع تسجيل الدخول */
 .login-box {
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@ body {
     box-shadow: 0 0 5px rgba(99, 91, 255, 0.3);
 }
 
-/* تصميم الزر */
+/* تصميم زر تسجيل الدخول */
 .primary-btn {
     background-color: #635BFF;
     color: #fff;
@@ -78,7 +78,7 @@ body {
     transform: scale(1.05);
 }
 
-/* تصميم الرسائل */
+/* تنسيق رسائل الخطأ */
 .error-message {
     color: #F44336;
     font-size: 14px;
