@@ -1,5 +1,6 @@
-const transactions = [];
+let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
+// تحليل الإيصال
 function analyzeReceipt() {
     const receiptText = document.getElementById('receipt').value;
 
@@ -29,27 +30,27 @@ function analyzeReceipt() {
     });
 
     if (date && amount) {
-        transactions.push({
-            date,
-            category: category || "غير محدد",
-            description: "---",
-            notes: notes || "لا يوجد",
-            amount
-        });
-
-        updateTable();
-        updateTotals();
-        document.getElementById('receipt').value = ''; // تفريغ مربع النص
+        transactions.push({ date, category, description: "---", notes, amount });
+        saveAndRenderData();
+        document.getElementById('receipt').value = '';
     } else {
-        alert("الرجاء التحقق من صحة البيانات في الإيصال.");
+        alert("الرجاء إدخال بيانات صحيحة!");
     }
 }
 
+// حفظ البيانات وتحديث العرض
+function saveAndRenderData() {
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+    updateTable();
+    updateTotals();
+}
+
+// تحديث الجدول
 function updateTable() {
     const tableBody = document.getElementById('data-rows');
     tableBody.innerHTML = '';
 
-    transactions.forEach(row => {
+    transactions.forEach((row, index) => {
         const newRow = `
             <tr>
                 <td>${row.date}</td>
@@ -57,12 +58,16 @@ function updateTable() {
                 <td>${row.description}</td>
                 <td>${row.notes}</td>
                 <td>${row.amount.toFixed(2)}</td>
+                <td>
+                    <button onclick="deleteTransaction(${index})" class="delete-btn">حذف</button>
+                </td>
             </tr>
         `;
         tableBody.insertAdjacentHTML('beforeend', newRow);
     });
 }
 
+// تحديث المجاميع
 function updateTotals() {
     let totalIncome = 0;
     let totalExpense = 0;
@@ -77,4 +82,24 @@ function updateTotals() {
 
     document.getElementById('income-total').innerText = totalIncome.toFixed(2);
     document.getElementById('expense-total').innerText = totalExpense.toFixed(2);
+}
+
+// حذف صف من الجدول
+function deleteTransaction(index) {
+    transactions.splice(index, 1);
+    saveAndRenderData();
+}
+
+// تصدير البيانات إلى Excel
+function exportToExcel() {
+    const csvContent = "data:text/csv;charset=utf-8,"
+        + "التاريخ,الفئة,الوصف,ملاحظات,المبلغ\n"
+        + transactions.map(t => `${t.date},${t.category},${t.description},${t.notes},${t.amount}`).join("\n");
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "transactions.csv");
+    document.body.appendChild(link);
+    link.click();
 }
