@@ -1,47 +1,37 @@
 body {
     font-family: 'IBM Plex Sans Arabic', sans-serif;
     background-color: #f4f7f6;
-    color: #333;
     margin: 0;
+    text-align: center;
 }
 
 .login-container {
     max-width: 400px;
     margin: 100px auto;
-    background: #fff;
     padding: 20px;
+    background: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    text-align: center;
 }
 
-.login-box input {
+.login-box input, button {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
-    border: 1px solid #ccc;
 }
 
-.primary-btn, .logout-btn, .delete-btn {
-    padding: 10px;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 5px;
-}
-
-.primary-btn { background-color: #4CAF50; }
-.logout-btn, .delete-btn { background-color: #F44336; }
+.primary-btn { background-color: #4CAF50; color: white; }
+.logout-btn, .delete-btn { background-color: #F44336; color: white; }
 
 table {
-    width: 80%;
-    margin: auto;
+    width: 90%;
+    margin: 20px auto;
     border-collapse: collapse;
 }
 
 th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 10px;
+    text-align: center;
 }
