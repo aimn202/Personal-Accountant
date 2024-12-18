@@ -1,9 +1,9 @@
-// قائمة المستخدمين وكلمات المرور
 const users = [
     { username: "admin", password: "1234" },
-    { username: "user", password: "5678" },
-    { username: "newuser", password: "mypassword" } // مستخدم جديد
+    { username: "user", password: "5678" }
 ];
+
+const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
 // تسجيل الدخول
 function login() {
@@ -13,7 +13,7 @@ function login() {
     const user = users.find(u => u.username === username && u.password === password);
 
     if (user) {
-        localStorage.setItem("loggedInUser", username); // تخزين المستخدم في LocalStorage
+        localStorage.setItem("loggedInUser", username); // تخزين اسم المستخدم
         window.location.href = "home.html"; // إعادة التوجيه للصفحة الرئيسية
     } else {
         document.getElementById("error-message").innerText = "اسم المستخدم أو كلمة المرور غير صحيحة!";
@@ -35,8 +35,6 @@ function logout() {
 }
 
 // تحليل الإيصال
-const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
-
 function analyzeReceipt() {
     const receiptText = document.getElementById('receipt').value;
 
@@ -110,6 +108,7 @@ function deleteTransaction(index) {
     saveAndRenderData();
 }
 
+// تصدير البيانات إلى CSV
 function exportToExcel() {
     const csv = "data:text/csv;charset=utf-8," +
         "التاريخ,الفئة,الوصف,ملاحظات,المبلغ\n" +
@@ -119,4 +118,31 @@ function exportToExcel() {
     link.href = encodeURI(csv);
     link.download = "transactions.csv";
     link.click();
+}
+
+// عرض الأقسام حسب الاختيار
+function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.add('hidden'); // إخفاء جميع الأقسام
+    });
+    document.getElementById(sectionId).classList.remove('hidden'); // إظهار القسم المطلوب
+
+    // عرض بيانات الملف الشخصي
+    if (sectionId === 'profile') {
+        document.getElementById("username-display").innerText = localStorage.getItem("loggedInUser");
+    }
+
+    // عرض بيانات الادخار
+    if (sectionId === 'saving') {
+        calculateSavingPlan();
+    }
+}
+
+// حساب قاعدة الادخار 50-30-20
+function calculateSavingPlan() {
+    const totalIncome = transactions.reduce((sum, t) => sum + (t.category.includes("حوالة") ? t.amount : 0), 0);
+    document.getElementById("saving-total-income").innerText = totalIncome.toFixed(2);
+    document.getElementById("needs").innerText = (totalIncome * 0.5).toFixed(2);
+    document.getElementById("wants").innerText = (totalIncome * 0.3).toFixed(2);
+    document.getElementById("savings").innerText = (totalIncome * 0.2).toFixed(2);
 }
