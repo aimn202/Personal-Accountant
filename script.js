@@ -4,24 +4,44 @@ function analyzeReceipt() {
     // مصفوفة لتخزين البيانات المستخرجة
     const rows = [];
 
-    // تحليل النص بناءً على الأنماط
+    // تقسيم النص بناءً على الإيصالات
     const lines = receiptText.split('\n');
 
-    lines.forEach(line => {
-        const dateMatch = line.match(/في:([\d-: ]+)/); // لاستخراج التاريخ
-        const amountMatch = line.match(/مبلغ:SAR ([\d.]+)/); // لاستخراج المبلغ
-        const descriptionMatch = line.match(/(?:شراء|حوالة داخلية|مدفوعات وزارة الداخلية|خصم رسوم|حوالة محلية)/); // لاستخراج الوصف
-        const notesMatch = line.match(/من:([\w\s]+)/) || line.match(/لدى:([\w\s]+)/); // ملاحظات إضافية
+    let date = "";
+    let amount = "";
+    let notes = "";
+    let category = "";
 
-        if (dateMatch && amountMatch && descriptionMatch) {
-            rows.push({
-                date: dateMatch[1].trim(),
-                description: descriptionMatch[0],
-                amount: amountMatch[1],
-                notes: notesMatch ? notesMatch[1].trim() : 'لا يوجد'
-            });
+    lines.forEach(line => {
+        if (line.includes("مبلغ:SAR")) {
+            const matchAmount = line.match(/مبلغ:SAR ([\d.]+)/);
+            if (matchAmount) amount = matchAmount[1];
+        }
+
+        if (line.includes("في:")) {
+            const matchDate = line.match(/في:([\d-: ]+)/);
+            if (matchDate) date = matchDate[1];
+        }
+
+        if (line.includes("من:") || line.includes("الى:") || line.includes("لدى:")) {
+            const matchNotes = line.match(/(?:من:|الى:|لدى:)(.+)/);
+            if (matchNotes) notes = matchNotes[1].trim();
+        }
+
+        if (line.includes("شراء") || line.includes("حوالة") || line.includes("مدفوعات") || line.includes("خصم")) {
+            category = line.split(" ")[0];
         }
     });
+
+    if (date && amount) {
+        rows.push({
+            date,
+            category: category || "غير محدد",
+            description: "---",
+            notes: notes || "لا يوجد",
+            amount
+        });
+    }
 
     // تحديث الجدول
     const tableBody = document.getElementById('data-rows');
@@ -31,8 +51,8 @@ function analyzeReceipt() {
         const newRow = `
             <tr>
                 <td>${row.date}</td>
+                <td>${row.category}</td>
                 <td>${row.description}</td>
-                <td>---</td>
                 <td>${row.notes}</td>
                 <td>${row.amount}</td>
             </tr>
@@ -41,8 +61,8 @@ function analyzeReceipt() {
     });
 
     if (rows.length === 0) {
-        alert("لم يتم العثور على بيانات صالحة!");
+        alert("لم يتم العثور على بيانات صالحة في النص!");
     } else {
-        alert("تم تحليل الإيصال بنجاح!");
+        alert("تم تحليل الإيصال وإضافة البيانات إلى الجدول!");
     }
 }
