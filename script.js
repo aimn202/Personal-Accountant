@@ -1,4 +1,38 @@
-let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+const users = [
+    { username: "admin", password: "1234" },
+    { username: "user", password: "5678" }
+];
+
+const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+
+// تسجيل الدخول
+function login() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    const user = users.find(u => u.username === username && u.password === password);
+
+    if (user) {
+        localStorage.setItem("loggedInUser", username);
+        window.location.href = "home.html";
+    } else {
+        document.getElementById("error-message").innerText = "اسم المستخدم أو كلمة المرور غير صحيحة!";
+    }
+}
+
+// التحقق من تسجيل الدخول
+function checkLogin() {
+    const user = localStorage.getItem("loggedInUser");
+    if (!user) {
+        window.location.href = "login.html";
+    }
+}
+
+// تسجيل الخروج
+function logout() {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "login.html";
+}
 
 // تحليل الإيصال
 function analyzeReceipt() {
@@ -20,11 +54,10 @@ function analyzeReceipt() {
             const matchDate = line.match(/في:([\d-: ]+)/);
             if (matchDate) date = matchDate[1].trim();
         }
-        if (line.includes("من:") || line.includes("الى:") || line.includes("لدى:")) {
-            const matchNotes = line.match(/(?:من:|الى:|لدى:)(.+)/);
-            if (matchNotes) notes = matchNotes[1].trim();
+        if (line.includes("من:")) {
+            notes = line.split("من:")[1].trim();
         }
-        if (line.includes("شراء") || line.includes("حوالة") || line.includes("مدفوعات") || line.includes("خصم")) {
+        if (line.includes("شراء") || line.includes("حوالة")) {
             category = line.split(" ")[0];
         }
     });
@@ -38,14 +71,12 @@ function analyzeReceipt() {
     }
 }
 
-// حفظ البيانات وتحديث العرض
 function saveAndRenderData() {
     localStorage.setItem("transactions", JSON.stringify(transactions));
     updateTable();
     updateTotals();
 }
 
-// تحديث الجدول
 function updateTable() {
     const tableBody = document.getElementById('data-rows');
     tableBody.innerHTML = '';
@@ -57,49 +88,33 @@ function updateTable() {
                 <td>${row.category}</td>
                 <td>${row.description}</td>
                 <td>${row.notes}</td>
-                <td>${row.amount.toFixed(2)}</td>
-                <td>
-                    <button onclick="deleteTransaction(${index})" class="delete-btn">حذف</button>
-                </td>
+                <td>${row.amount}</td>
+                <td><button class="delete-btn" onclick="deleteTransaction(${index})">حذف</button></td>
             </tr>
         `;
         tableBody.insertAdjacentHTML('beforeend', newRow);
     });
 }
 
-// تحديث المجاميع
 function updateTotals() {
-    let totalIncome = 0;
-    let totalExpense = 0;
-
-    transactions.forEach(row => {
-        if (row.category.includes("حوالة") || row.category.includes("دخل")) {
-            totalIncome += row.amount;
-        } else {
-            totalExpense += row.amount;
-        }
-    });
-
-    document.getElementById('income-total').innerText = totalIncome.toFixed(2);
-    document.getElementById('expense-total').innerText = totalExpense.toFixed(2);
+    let totalIncome = 0, totalExpense = 0;
+    transactions.forEach(row => row.category.includes("حوالة") ? totalIncome += row.amount : totalExpense += row.amount);
+    document.getElementById("income-total").innerText = totalIncome.toFixed(2);
+    document.getElementById("expense-total").innerText = totalExpense.toFixed(2);
 }
 
-// حذف صف من الجدول
 function deleteTransaction(index) {
     transactions.splice(index, 1);
     saveAndRenderData();
 }
 
-// تصدير البيانات إلى Excel
 function exportToExcel() {
-    const csvContent = "data:text/csv;charset=utf-8,"
-        + "التاريخ,الفئة,الوصف,ملاحظات,المبلغ\n"
-        + transactions.map(t => `${t.date},${t.category},${t.description},${t.notes},${t.amount}`).join("\n");
+    const csv = "data:text/csv;charset=utf-8," +
+        "التاريخ,الفئة,الوصف,ملاحظات,المبلغ\n" +
+        transactions.map(t => `${t.date},${t.category},${t.description},${t.notes},${t.amount}`).join("\n");
 
-    const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "transactions.csv");
-    document.body.appendChild(link);
+    link.href = encodeURI(csv);
+    link.download = "transactions.csv";
     link.click();
 }
