@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إدخال بيانات المحاسبة</title>
-    <!-- تضمين خط IBM Plex Arabic -->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> <!-- ملف التنسيق -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- العنوان الرئيسي -->
     <header>
         <h1>برنامج المحاسب الشخصي</h1>
         <h2>إدخال بيانات المحاسبة</h2>
     </header>
 
-    <!-- إدخال نص الإيصال -->
     <div class="input-page">
         <div class="input-box">
             <textarea id="receipt" placeholder="أدخل نص الإيصال هنا"></textarea>
@@ -23,7 +20,6 @@
         </div>
     </div>
 
-    <!-- جدول عرض البيانات -->
     <div class="data-table">
         <table>
             <thead>
@@ -36,18 +32,16 @@
                 </tr>
             </thead>
             <tbody id="data-rows">
-                <!-- الصفوف المحللة ستُضاف هنا -->
+                <!-- البيانات ستُضاف هنا -->
             </tbody>
         </table>
+
+        <div id="totals" class="totals-section">
+            <p>مجموع الدخل الشهري: <span id="income-total">0</span> ريال</p>
+            <p>مجموع المصروفات الشهرية: <span id="expense-total">0</span> ريال</p>
+        </div>
     </div>
 
-    <!-- عرض مجاميع الدخل والمصروف -->
-    <div id="totals" class="totals-section">
-        <p>مجموع الدخل الشهري: <span id="income-total">0</span> ريال</p>
-        <p>مجموع المصروفات الشهرية: <span id="expense-total">0</span> ريال</p>
-    </div>
-
-    <!-- ملف JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
