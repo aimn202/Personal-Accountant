@@ -10,32 +10,38 @@
 <body>
     <header>
         <h1>برنامج المحاسب الشخصي</h1>
+        <h2>إدخال بيانات المحاسبة</h2>
     </header>
 
-    <!-- مربع نص الإدخال وزر التحليل -->
+    <!-- مربع نص إدخال الإيصال وزر التحليل -->
     <div class="input-page">
-        <h2>إدخال بيانات المحاسبة</h2>
         <div class="input-box">
             <textarea id="receipt" placeholder="أدخل نص الإيصال هنا"></textarea>
             <button class="primary-btn" onclick="analyzeReceipt()">تحليل الإيصال</button>
         </div>
-        
-        <!-- جدول عرض البيانات -->
-        <div class="data-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>التاريخ</th>
-                        <th>الفئة</th>
-                        <th>الوصف</th>
-                        <th>ملاحظات</th>
-                        <th>المبلغ (ريال سعودي)</th>
-                    </tr>
-                </thead>
-                <tbody id="data-rows">
-                    <!-- البيانات المُحللة ستظهر هنا -->
-                </tbody>
-            </table>
+    </div>
+
+    <!-- جدول عرض البيانات -->
+    <div class="data-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>التاريخ</th>
+                    <th>الفئة</th>
+                    <th>الوصف</th>
+                    <th>ملاحظات</th>
+                    <th>المبلغ (ريال سعودي)</th>
+                </tr>
+            </thead>
+            <tbody id="data-rows">
+                <!-- الصفوف المحللة ستُضاف هنا -->
+            </tbody>
+        </table>
+
+        <!-- عرض مجاميع الدخل والمصروف -->
+        <div id="totals" class="totals-section">
+            <p>مجموع الدخل الشهري: 0 ريال</p>
+            <p>مجموع المصروفات الشهرية: 0 ريال</p>
         </div>
     </div>
 
