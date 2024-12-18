@@ -1,26 +1,26 @@
+// مصفوفة لتخزين جميع البيانات المدخلة
+const transactions = [];
+
+// تحليل الإيصال
 function analyzeReceipt() {
     const receiptText = document.getElementById('receipt').value;
-
-    // مصفوفة لتخزين البيانات المستخرجة
-    const rows = [];
-
-    // تقسيم النص بناءً على الإيصالات
-    const lines = receiptText.split('\n');
 
     let date = "";
     let amount = "";
     let notes = "";
     let category = "";
 
+    const lines = receiptText.split('\n');
+
     lines.forEach(line => {
         if (line.includes("مبلغ:SAR")) {
             const matchAmount = line.match(/مبلغ:SAR ([\d.]+)/);
-            if (matchAmount) amount = matchAmount[1];
+            if (matchAmount) amount = parseFloat(matchAmount[1]);
         }
 
         if (line.includes("في:")) {
             const matchDate = line.match(/في:([\d-: ]+)/);
-            if (matchDate) date = matchDate[1];
+            if (matchDate) date = matchDate[1].trim();
         }
 
         if (line.includes("من:") || line.includes("الى:") || line.includes("لدى:")) {
@@ -34,20 +34,28 @@ function analyzeReceipt() {
     });
 
     if (date && amount) {
-        rows.push({
+        transactions.push({
             date,
             category: category || "غير محدد",
             description: "---",
             notes: notes || "لا يوجد",
             amount
         });
+
+        updateTable(); // تحديث الجدول
+        updateTotals(); // تحديث المجموع
+        document.getElementById('receipt').value = ''; // تفريغ مربع النص
+    } else {
+        alert("الرجاء التحقق من صحة الإيصال!");
     }
+}
 
-    // تحديث الجدول
+// تحديث الجدول
+function updateTable() {
     const tableBody = document.getElementById('data-rows');
-    tableBody.innerHTML = ''; // تفريغ الجدول السابق
+    tableBody.innerHTML = ''; // تفريغ الجدول القديم
 
-    rows.forEach((row, index) => {
+    transactions.forEach((row, index) => {
         const newRow = `
             <tr>
                 <td>${row.date}</td>
@@ -59,10 +67,23 @@ function analyzeReceipt() {
         `;
         tableBody.insertAdjacentHTML('beforeend', newRow);
     });
+}
 
-    if (rows.length === 0) {
-        alert("لم يتم العثور على بيانات صالحة في النص!");
-    } else {
-        alert("تم تحليل الإيصال وإضافة البيانات إلى الجدول!");
-    }
+// تحديث مجاميع الدخل والصرف الشهري
+function updateTotals() {
+    let totalIncome = 0;
+    let totalExpense = 0;
+
+    transactions.forEach(row => {
+        if (row.category.includes("حوالة") || row.category.includes("دخل")) {
+            totalIncome += row.amount;
+        } else {
+            totalExpense += row.amount;
+        }
+    });
+
+    document.getElementById('totals').innerHTML = `
+        <p>مجموع الدخل الشهري: ${totalIncome.toFixed(2)} ريال</p>
+        <p>مجموع المصروفات الشهرية: ${totalExpense.toFixed(2)} ريال</p>
+    `;
 }
