@@ -1,4 +1,3 @@
-/* إعدادات عامة */
 body {
     font-family: 'IBM Plex Sans Arabic', sans-serif;
     margin: 0;
@@ -8,11 +7,6 @@ body {
     line-height: 1.6;
 }
 
-h1, h2, p {
-    margin: 10px 0;
-}
-
-/* قائمة التنقل (Navbar) */
 nav {
     background-color: #0F285A;
     color: white;
@@ -21,12 +15,6 @@ nav {
     align-items: center;
     padding: 10px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-nav h1 {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 0;
 }
 
 nav ul {
@@ -39,15 +27,14 @@ nav ul {
 
 nav ul li {
     cursor: pointer;
-    transition: color 0.3s ease-in-out;
     font-size: 16px;
+    transition: color 0.3s;
 }
 
 nav ul li:hover {
     color: #FFC107;
 }
 
-/* الأقسام */
 .section {
     margin: 20px auto;
     padding: 20px;
@@ -63,14 +50,6 @@ nav ul li:hover {
     display: none;
 }
 
-/* مربع إدخال النص */
-.input-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px auto;
-}
-
 .input-box textarea {
     width: 100%;
     max-width: 600px;
@@ -78,7 +57,6 @@ nav ul li:hover {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    font-size: 16px;
     margin-bottom: 10px;
     resize: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -90,7 +68,7 @@ button {
     border-radius: 6px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
@@ -106,15 +84,6 @@ button:hover {
     background-color: #4E47CC;
 }
 
-.export-btn {
-    background-color: #2196F3;
-    color: white;
-}
-
-.export-btn:hover {
-    background-color: #1A73E8;
-}
-
 .logout-btn {
     background-color: #F44336;
     color: white;
@@ -124,21 +93,6 @@ button:hover {
     background-color: #D32F2F;
 }
 
-.delete-btn {
-    background-color: #F44336;
-    color: white;
-    font-size: 14px;
-    padding: 6px 10px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-.delete-btn:hover {
-    background-color: #D32F2F;
-}
-
-/* الجداول */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -164,44 +118,4 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #eef3f7;
-}
-
-/* بطاقات الموازنة والادخار */
-#saving p, #budget p {
-    font-size: 18px;
-    margin: 10px 0;
-    color: #555;
-}
-
-#saving span, #budget span {
-    font-weight: bold;
-    color: #635BFF;
-    font-size: 20px;
-}
-
-/* تنسيق قسم الملف الشخصي */
-#profile {
-    text-align: center;
-}
-
-#profile p {
-    font-size: 18px;
-    color: #444;
-    margin: 10px 0;
-}
-
-/* تنسيق الرسائل */
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-/* رأس الصفحة */
-header {
-    background-color: #0F285A;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    border-bottom: 4px solid #FFC107;
 }
