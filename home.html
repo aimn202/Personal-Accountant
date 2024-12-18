@@ -1,21 +1,45 @@
-<div class="input-box">
-    <textarea id="receipt" placeholder="أدخل نص الإيصال هنا"></textarea>
-    <button class="primary-btn" onclick="analyzeReceipt()">تحليل الإيصال</button>
-</div>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدخال بيانات المحاسبة</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>برنامج المحاسب الشخصي</h1>
+    </header>
 
-<div class="data-table">
-    <table>
-        <thead>
-            <tr>
-                <th>التاريخ</th>
-                <th>الفئة</th>
-                <th>الوصف</th>
-                <th>ملاحظات</th>
-                <th>المبلغ (ريال سعودي)</th>
-            </tr>
-        </thead>
-        <tbody id="data-rows">
-            <!-- البيانات المُحللة ستظهر هنا -->
-        </tbody>
-    </table>
-</div>
+    <!-- مربع نص الإدخال وزر التحليل -->
+    <div class="input-page">
+        <h2>إدخال بيانات المحاسبة</h2>
+        <div class="input-box">
+            <textarea id="receipt" placeholder="أدخل نص الإيصال هنا"></textarea>
+            <button class="primary-btn" onclick="analyzeReceipt()">تحليل الإيصال</button>
+        </div>
+        
+        <!-- جدول عرض البيانات -->
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>التاريخ</th>
+                        <th>الفئة</th>
+                        <th>الوصف</th>
+                        <th>ملاحظات</th>
+                        <th>المبلغ (ريال سعودي)</th>
+                    </tr>
+                </thead>
+                <tbody id="data-rows">
+                    <!-- البيانات المُحللة ستظهر هنا -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ملف JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
