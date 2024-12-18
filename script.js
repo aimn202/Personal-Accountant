@@ -1,20 +1,15 @@
-// مصفوفة لتخزين العمليات المُدخلة
 const transactions = [];
 
-// تحليل الإيصال وإضافة البيانات إلى الجدول
 function analyzeReceipt() {
     const receiptText = document.getElementById('receipt').value;
 
-    // متغيرات لحفظ البيانات المُستخرجة
     let date = "";
     let amount = 0;
     let notes = "";
     let category = "";
 
-    // تقسيم النص إلى أسطر
     const lines = receiptText.split('\n');
 
-    // تحليل كل سطر للعثور على البيانات
     lines.forEach(line => {
         if (line.includes("مبلغ:SAR")) {
             const matchAmount = line.match(/مبلغ:SAR ([\d.]+)/);
@@ -33,7 +28,6 @@ function analyzeReceipt() {
         }
     });
 
-    // إضافة البيانات إلى المصفوفة إذا كانت كاملة
     if (date && amount) {
         transactions.push({
             date,
@@ -45,18 +39,15 @@ function analyzeReceipt() {
 
         updateTable();
         updateTotals();
-
-        // تفريغ مربع النص
-        document.getElementById('receipt').value = '';
+        document.getElementById('receipt').value = ''; // تفريغ مربع النص
     } else {
         alert("الرجاء التحقق من صحة البيانات في الإيصال.");
     }
 }
 
-// تحديث الجدول بالبيانات الجديدة
 function updateTable() {
     const tableBody = document.getElementById('data-rows');
-    tableBody.innerHTML = ''; // تفريغ الجدول القديم
+    tableBody.innerHTML = '';
 
     transactions.forEach(row => {
         const newRow = `
@@ -72,7 +63,6 @@ function updateTable() {
     });
 }
 
-// تحديث مجاميع الدخل والمصروف
 function updateTotals() {
     let totalIncome = 0;
     let totalExpense = 0;
