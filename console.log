@@ -1,0 +1,5 @@
+console.log("Line:", line);
+console.log("Amount:", amount);
+console.log("Date:", date);
+console.log("Notes:", notes);
+console.log("Category:", category);
