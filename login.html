@@ -10,14 +10,15 @@
 <body>
     <div class="login-container">
         <h1>برنامج المحاسب الشخصي</h1>
+        <p>مرحبًا</p>
         <div class="login-box">
             <label for="username">اسم المستخدم</label>
             <input type="text" id="username" placeholder="أدخل اسم المستخدم">
             <label for="password">كلمة المرور</label>
             <input type="password" id="password" placeholder="أدخل كلمة المرور">
-            <button class="primary-btn" onclick="login()">تسجيل الدخول</button>
+            <button class="primary-btn" onclick="login()">دخول</button>
+            <p id="error-message" class="error-message"></p>
         </div>
-        <p id="error-message" class="error"></p>
     </div>
 
     <script src="script.js"></script>
