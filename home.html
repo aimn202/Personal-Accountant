@@ -23,8 +23,10 @@
         <section id="transactions" class="section">
             <div class="input-box">
                 <textarea id="receipt" placeholder="أدخل نص الإيصال هنا"></textarea>
-                <button class="primary-btn" onclick="analyzeReceipt()">تحليل الإيصال</button>
-                <button class="primary-btn export-btn" onclick="exportToExcel()">تصدير البيانات</button>
+                <div class="buttons">
+                    <button class="primary-btn" onclick="analyzeReceipt()">تحليل الإيصال</button>
+                    <button class="primary-btn export-btn" onclick="exportToExcel()">تصدير البيانات</button>
+                </div>
             </div>
             <table>
                 <thead>
